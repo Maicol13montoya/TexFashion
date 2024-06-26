@@ -1,5 +1,9 @@
 
 ![TexFashion](https://github.com/Maicol13montoya/thex_fashion/assets/172074119/596ae1a3-da54-4ec9-b207-f954e8f42426)
+
+------------
+
+
 ###   ***TEX FASHION***
 
 ------------
@@ -10,6 +14,13 @@ La microempresa  carece de un inventario, por lo tanto, no cuenta con un registr
 El objetivo especifico de nuestro equipo de trabajo es el analisis y desarrollo de un sistema de información integral para TexFashion,  que se centre en la gestión eficiente del inventario. 
 Este sistema debe estar diseñado para satisfacer las necesidades específicas de TexFashion, optimizando la administración de su materia prima.
 </p>
+
+
+------------
+
+
+
+
 
 
 
