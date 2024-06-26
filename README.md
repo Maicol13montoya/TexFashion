@@ -1,4 +1,4 @@
-
+------------
 ![TexFashion](https://github.com/Maicol13montoya/thex_fashion/assets/172074119/596ae1a3-da54-4ec9-b207-f954e8f42426)
 
 ------------
