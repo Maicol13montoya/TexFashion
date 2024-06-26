@@ -11,12 +11,5 @@ El objetivo especifico de nuestro equipo de trabajo es el analisis y desarrollo 
 Este sistema debe estar diseñado para satisfacer las necesidades específicas de TexFashion, optimizando la administración de su materia prima.
 </p>
 
-####   ***Los objetivos especificos de nuestro equipo son:***
-<p>
-*- Registro y actualización de inventario
-- Seguimiento de movimientos de inventario
-- Análisis de datos para la toma de decisiones
-</p>
-Se busca solucionar la falta de manejo de inventario adecuado implementando un sistema que permita a los dueños gestionar el ingreso de materia prima.
 
 
