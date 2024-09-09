@@ -1,0 +1,494 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #70ccf4;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+main {
+    padding: 200px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(0, 100, 148, 1) 100%);
+    padding: 10px 20px;
+    color: #000000;
+}
+
+.navbar .logo img {
+    height: 70px;
+    /* Ajusta el tamaño del logo */
+    width: auto;
+    margin-left: 60px;
+    /* Mantiene la proporción del logo */
+}
+
+.navbar .nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #8ccaf9;
+}
+
+.form-section,
+.table-section {
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+a.btn {
+    border: none;
+    padding: 10px 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
+    background-color: #bdd7e3;
+    /* Default background color */
+}
+
+/* Botón de submit ocupa todo el ancho disponible y tiene un margen superior */
+button.btn.submit-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Color de fondo por defecto al pasar el cursor sobre el botón */
+button.btn:hover {
+    background-color: #81b5e6;
+}
+
+/* Botones específicos */
+.add-btn {
+    background-color: #bdd7e3;
+    border: none;
+    padding: 10px 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
+
+    /* Un azul claro */
+}
+
+.update-btn {
+    background-color: #bee9e8;
+    border: none;
+    padding: 10px 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
+
+    /* Un verde claro */
+}
+
+.delete-btn {
+    background-color: #e7bbbb;
+    border: none;
+    padding: 10px 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
+
+    /* Un rosa claro */
+}
+
+
+
+/* Estilo para el contenedor del campo de búsqueda */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    /* Ajusta el ancho máximo según el tamaño deseado */
+    margin: auto;
+    /* Centra el contenedor si es necesario */
+}
+
+/* Estilo para el campo de búsqueda */
+input#searchInput {
+    padding: 10px 40px 10px 30px;
+    /* Ajusta el padding para dar espacio a la lupa */
+    border: 1px solid #3b3b3b;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    /* Ajusta el tamaño del texto si es necesario */
+    background-image: url('Lupa.jpg');
+    /* Usa la imagen de la lupa */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    /* Ajusta la posición de la lupa */
+    background-size: 30px 30px;
+    /* Ajusta el tamaño de la lupa */
+    max-width: 20%;
+    /* Asegura que el campo no exceda el ancho del contenedor */
+}
+
+
+/* Ajusta el tamaño de fuente y el padding para thead */
+thead {
+    background-color: #bdd7e3;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    /* Ajusta el tamaño de la fuente si es necesario */
+    padding: 8px;
+    /* Ajusta el padding para hacer thead más pequeño */
+}
+
+/* Asegúrate de que el contenedor de tabla tenga overflow-x auto */
+.table-container {
+    max-width: 1500px;
+    margin: auto;
+    overflow-x: auto;
+    /* Asegura que la tabla pueda desplazarse horizontalmente si es necesario */
+    padding: 20px;
+}
+
+/* Si necesitas mantener la tabla completamente en el contenedor con scroll horizontal */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 600px;
+    /* Ajusta el ancho mínimo si la tabla es muy estrecha */
+}
+
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e0f7fa;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+.image-container {
+    width: 150px;
+    /* Ajusta el ancho del contenedor de imagen */
+    height: 100px;
+    /* Ajusta la altura del contenedor de imagen */
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Asegura que la imagen cubra el contenedor sin deformarse */
+}
+
+@media (max-width: 768px) {
+
+    th,
+    td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        border: 0;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+.input-group {
+
+    position: relative;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    padding-left: 10px;
+}
+
+.form-control {
+    padding-left: 35px;
+    border-radius: 20px;
+}
+
+.input-group-text i {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-70%);
+    left: 25px;
+    color: #aaa;
+}
+
+
+h1 {
+    color: #0a0a0a;
+    text-align: center;
+}
+
+#proveedoresContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.proveedor {
+    background: #fff;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 0 15px rgb(0, 0, 0);
+    box-sizing: border-box;
+    background-color: #cae9ff;
+}
+
+.proveedor h3 {
+    margin-top: 0;
+    color: #080808;
+}
+
+.proveedor p {
+    margin: 5px 0;
+}
+
+.form-section {
+    margin-top: -45px;
+    max-width: 600px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 16px;
+    color: #555;
+}
+
+.form-control {
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.btn-success {
+    background-color: #bdd7e3;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #0e93d1;
+}
+
+.btn-success:active {
+    background-color: #218fc2;
+}
+
+.no-underline {
+    text-decoration: none;
+    /* Quita el subrayado */
+    color: inherit;
+    /* Mantiene el color del texto */
+}
+
+.no-underline:hover {
+    text-decoration: none;
+    /* Asegura que tampoco tenga subrayado al pasar el mouse */
+    color: inherit;
+    /* Mantiene el color al pasar el mouse */
+}
+
+
+       
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #4490d8;
+        }
+
+        .container p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .container .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #4599d1;
+        }
+
+        .container button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #21a5da;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+      
