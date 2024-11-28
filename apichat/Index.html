@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - Consulta de Factura</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Contenedor principal del chatbot */
+        #chat-container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            height: 650px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Encabezado del chatbot */
+        #chat-header {
+            background: #6a11cb;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            padding: 15px 20px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid #eeeeee;
+        }
+
+        /* Caja de mensajes */
+        #chat-box {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        /* Estilo de los mensajes */
+        #chat-box .user-message,
+        #chat-box .bot-message {
+            margin-bottom: 10px;
+            padding: 15px 20px;
+            border-radius: 20px;
+            word-wrap: break-word;
+            font-size: 14px;
+            max-width: 75%;
+            line-height: 1.5;
+        }
+
+        .user-message {
+            background: #e0f7fa;
+            align-self: flex-end;
+            text-align: right;
+            border: 1px solid #b2ebf2;
+        }
+
+        .bot-message {
+            background: #ffffff;
+            align-self: flex-start;
+            border: 1px solid #eeeeee;
+        }
+
+        /* Contenedor de entrada */
+        #input-container {
+            padding: 10px 15px;
+            background: #ffffff;
+            display: flex;
+            border-top: 2px solid #eeeeee;
+        }
+
+        /* Campo de entrada */
+        #input-container input {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #dddddd;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #input-container input:focus {
+            border-color: #2575fc;
+        }
+
+        /* Botón de consulta */
+        #input-container button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #input-container button:hover {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            transform: translateY(-3px);
+        }
+
+        #input-container button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Loader mientras se consulta */
+        #loader {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2575fc;
+        }
+
+        /* Estilo del menú */
+        #menu-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #menu-container button {
+            padding: 12px 20px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #menu-container button:hover {
+            background: #2575fc;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="chat-container">
+        <div id="chat-header">Chatbot - Consulta de Factura</div>
+        <div id="chat-box">
+            <div class="bot-message">
+                👋 ¡Hola! Soy tu asistente virtual. ¿Cómo puedo ayudarte hoy?
+            </div>
+            <div id="menu-container">
+                <button id="menuBuscarFactura">🔍 Buscar con referencia</button>
+            </div>
+            <div id="menu-container">
+                <button id="menuBuscarDireccion">🔍 Dirección del establecimiento</button>
+            </div>
+            <div id="menu-container">
+                <button id="menuBuscarTelefono">🔍 Número telefónico</button>
+            </div>
+            <div id="menu-container">
+                <button id="menuBuscarCorreo">🔍 Correo de Texfashion</button>
+            </div>
+        </div>
+        <div id="loader" style="display:none;">Consultando...</div>
+        <div id="input-container">
+            <input type="text" id="referencia" placeholder="Introduce el número de factura o referencia..." />
+            <button id="consultarFactura" disabled>Consultar</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para agregar mensajes al chat
+        function addMessage(message, sender) {
+            const messageContainer = $('<div></div>').addClass(sender + '-message').html(message);
+            $('#chat-box').append(messageContainer);
+            $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight); // Desplazar al final
+        }
+
+        // Activar el botón cuando hay texto en el campo de entrada
+        $('#referencia').on('input', function () {
+            const referencia = $(this).val().trim();
+            $('#consultarFactura').prop('disabled', referencia.length === 0);
+        });
+
+        // Consultar la factura cuando se presiona el botón
+        $('#consultarFactura').click(function () {
+            const referencia = $('#referencia').val().trim();
+            if (!referencia) return;
+
+            // Mostrar loader y deshabilitar el botón
+            $('#loader').show();
+            $('#consultarFactura').prop('disabled', true);
+
+            // Mensaje del usuario
+            addMessage('Buscando factura: ' + referencia, 'user');
+
+            // Solicitud AJAX
+            $.ajax({
+                url: 'consulta_factura.php',
+                method: 'GET',
+                data: { referencia: referencia },
+                success: function (data) {
+                    console.log(data); // Verificar la respuesta
+                    const response = JSON.parse(data);
+                    addMessage(response.response, 'bot');
+                    $('#loader').hide();
+                    $('#consultarFactura').prop('disabled', false);
+                },
+                error: function () {
+                    addMessage('🚨 Hubo un error al consultar la factura. Inténtalo de nuevo.', 'bot');
+                    $('#loader').hide();
+                    $('#consultarFactura').prop('disabled', false);
+                }
+            });
+        });
+
+        // Mostrar el menú de búsqueda cuando se presiona "Buscar con referencia"
+        $('#menuBuscarFactura').click(function () {
+            $('#chat-box').append('<div class="bot-message">🔎 Por favor, introduce el número de factura o referencia para continuar.</div>');
+            $('#referencia').val(''); // Limpiar el campo de entrada
+            $('#consultarFactura').prop('disabled', true); // Deshabilitar botón al reiniciar
+        });
+
+        // Mostrar la dirección cuando se presiona el botón
+        $('#menuBuscarDireccion').click(function () {
+            addMessage('🔍 La dirección del establecimiento es: Calle 45 Sur, Este B Sur 43', 'bot');
+        });
+
+        // Mostrar el número telefónico cuando se presiona el botón
+        $('#menuBuscarTelefono').click(function () {
+            addMessage('🔍 El número telefónico de la empresa es: 3214911633', 'bot');
+        });
+
+        // Mostrar el correo electrónico cuando se presiona el botón
+        $('#menuBuscarCorreo').click(function () {
+            addMessage('🔍 El correo electrónico de la empresa es: texfhion84@gmail.com', 'bot');
+        });
+
+    </script>
+</body>
+
+</html>
